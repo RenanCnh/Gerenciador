@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block page-title %}
+Nova Tarefa
+{% endblock page-title %}
+
+{% block content %}
+{% if todo.pk %}
+<h1>Editar Tarefa</h1>
+{% else %}
+<h1>Nova Tarefa</h1>
+{% endif %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<form method="post">
+    {% csrf_token %}
+
+    {{ form }}
+
+    <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+    <a href="{% url 'todo_list' %}" class="btn btn-primary">Voltar</a>
+</form>
+{% endblock content%}
